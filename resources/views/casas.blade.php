@@ -26,6 +26,9 @@
                 {{-- container --}}
                 <div class="card mt-3" style="width: 18rem;">
                     <img src="{{asset('storage/'.$propiedad->imageName)}}" class="card-img-top" alt="{{$propiedad->imageName}}">
+
+
+
                     <div class="card-bodys">
                     <h5 class="card-title text-center">{{$propiedad->propName}}</h5>
                     <p class="text-center bg-dark" style="color:#E8BC15; border-radius:3rem 5%; font-size:.7rem">{{$propiedad->biztypeName}}</p>
