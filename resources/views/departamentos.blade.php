@@ -3,11 +3,11 @@
 @section('main-content')
 
     <div class="d-flex w-100 bg-dark align-items-center" style="margin-top: -5vh; height:10vh" >
-        <label style="color:#e1e1e1; margin-right:1vw; margin-left:3vw;">Tipo de Operación:</label>
-        <form action="{{route('Departamentos.index')}}" method="post">
+        <label style="color:#e1e1e1; margin-right:1vw; margin-left:3vw; font-size:.7rem">Tipo de Operación:</label>
+        <form action="{{route('Departamentos.index')}}" method="post" class="mt-2">
             @csrf
             @method('GET')
-            <select name="bizmode" class="dropdown text-center form-control bg-dark" style="width: auto; color:#E8BC15;  border:#E8BC15 solid 1px" onchange="this.form.submit()">
+            <select name="bizmode" class="dropdown text-center form-control bg-dark" style="width: auto; color:#E8BC15; border:#E8BC15 solid 1px; font-size:.7rem" onchange="this.form.submit()">
                 <option value="all" {{$bizmode === null ? 'selected': ''}}>--Seleccionar Tipo de Operación--</option>
                 <option value="renta" {{$bizmode==='renta' ? 'selected': ''}}>Renta</option>
                 <option value="venta" {{$bizmode==='venta' ? 'selected': ''}}>Venta</option>

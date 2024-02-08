@@ -1,14 +1,14 @@
 
 <div>
-    <div class="d-flex gap-3 justify-content-between">
-        Contacto:
+    <div class="d-flex gap-3 justify-content-between" style="font-size:.7rem">
+        <span>Contacto</span>
         <span>
             <a href="tel:+4794117466" style="color:#E8BC15">(479) 411 7466</a>
         </span>
     </div>
 </div>
 
-<div>
+<div style="font-size:.7rem">
     <a style="color:#E8BC15" href="{{route('Aboutus')}}"> Acerca de Nosotros</a>
 </div>
 <div class="d-flex gap-3 justify-content-between">
