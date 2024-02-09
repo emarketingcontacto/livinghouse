@@ -11,6 +11,6 @@ class AseroriasController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('Servicios.Asesorias');
+        return view('Servicios.asesorias');
     }
 }

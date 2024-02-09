@@ -11,6 +11,6 @@ class NotarialController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return view('Servicios.Notarial');
+        return view('Servicios.notarial');
     }
 }
