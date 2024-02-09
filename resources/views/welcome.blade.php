@@ -70,7 +70,7 @@
             <div class="action-col">
                 <div class="container">
                     <div class="text-center contact">
-                        <a href="tel:+4771598183">
+                        <a href="tel:+4794117466">
                             <span class="material-symbols-outlined" style="color:#E8BC15; font-size:5rem;">
                                 ring_volume
                             </span>

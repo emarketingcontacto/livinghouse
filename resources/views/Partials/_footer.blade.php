@@ -1,10 +1,9 @@
 
 <div>
-    <div class="d-flex gap-3 justify-content-between" style="font-size:.7rem">
-        <span>Contacto</span>
-        <span>
+    <div class="d-flex gap-1 justify-content-between" style="font-size:.7rem">
             <a href="tel:+4794117466" style="color:#E8BC15">(479) 411 7466</a>
-        </span>
+            <a href="tel:+4772692308" style="color:#E8BC15">(477) 269 2308</a>
+            <a href="tel:+4776705037" style="color:#E8BC15">(477) 670 5037</a>
     </div>
 </div>
 
