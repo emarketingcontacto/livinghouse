@@ -3,6 +3,7 @@
 @section('main-content')
 
     <div class="d-flex w-100 bg-dark align-items-center" style="margin-top: -5vh; height:10vh;" >
+
         <label style="color:#e1e1e1; margin-right:1vw; margin-left:3vw; font-size:.7rem">Tipo de Operación:</label>
         <form action="{{route('Casas')}}" method="post" class="mt-2">
             @csrf
@@ -14,6 +15,20 @@
                 <option value="all"   {{$bizmode === 'all' ? 'selected': ''}}>Todos</option>
             </select>
         </form>
+
+        <label style="color:#e1e1e1; margin-right:1vw; margin-left:3vw; font-size:.7rem">Colonia:</label>
+        <form action="{{route('Casas')}}" method="post" class="mt-2">
+            @csrf
+            @method('GET')
+            <select name="bizmode" class="dropdown text-center form-control bg-dark" style="width: auto; color:#E8BC15;  border:#E8BC15 solid 1px;  font-size:.7rem" onchange="this.form.submit()">
+                <option value="all" {{$bizmode === null ? 'selected': ''}}>--Seleccionar Tipo de Operación--</option>
+                <option value="renta" {{$bizmode==='renta' ? 'selected': ''}}>Renta</option>
+                <option value="venta" {{$bizmode==='venta' ? 'selected': ''}}>Venta</option>
+                <option value="all"   {{$bizmode === 'all' ? 'selected': ''}}>Todos</option>
+            </select>
+        </form>
+
+
     </div>
 
     <div class="container-fluid d-flex flex-wrap gap-2 justify-content-center">
@@ -29,9 +44,9 @@
 
 
 
-                    <div class="card-bodys">
-                    <h5 class="card-title text-center">{{$propiedad->propName}}</h5>
-                    <p class="text-center bg-dark" style="color:#E8BC15; border-radius:3rem 5%; font-size:.7rem">{{$propiedad->biztypeName}}</p>
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{$propiedad->propName}}</h5>
+                        <p class="text-center bg-dark" style="color:#E8BC15; border-radius:3rem 5%; font-size:.7rem">{{$propiedad->biztypeName}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex">
@@ -39,16 +54,24 @@
                             <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propDetails}} </p>
                         </li>
 
-                        <li class="list-group-item d-flex">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
                             <h3 class="text-center"><span class="material-symbols-outlined fs-2">home_pin</span></h3>
-                            <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propLocation}} </p>
+                            <div class="flex flex-column">
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propStreetNum}} </p>
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propNeighborhood}} </p>
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propCity}} -  {{$propiedad->propState}}  </p>
+                            </div>
                         </li>
 
-                        <li class="list-group-item d-flex flex-wrap">
-                            <h3 class="text-center"><span class="material-symbols-outlined fs-2">square_foot</span></h3>
-                            <p class="text-center p-1" style="font-size:.8rem">Ft: {{$propiedad->propFront}}</p>
-                            <p class="text-center p-1" style="font-size:.8rem">Fd: {{$propiedad->propDepth}}</p>
-                            <p class="text-center p-1" style="font-size:.8rem">Total: {{$propiedad->propTotal}}</p>
+                        <li class="list-group-item d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="flex">
+                                <h3 class="text-center"><span class="material-symbols-outlined fs-2">square_foot</span></h3>
+                            </div>
+                            <div class="flex">
+                                <p class="text-center p-1" style="font-size:.8rem">Fente: {{$propiedad->propFront}}</p>
+                                <p class="text-center p-1" style="font-size:.8rem">Fondo: {{$propiedad->propDepth}}</p>
+                                <p class="text-center p-1" style="font-size:.8rem">Total: {{$propiedad->propTotal}}</p>
+                            </div>
                         </li>
 
                         <li class="list-group-item d-flex justify-content-around">

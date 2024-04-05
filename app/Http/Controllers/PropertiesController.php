@@ -47,14 +47,17 @@ class PropertiesController extends Controller
     public function store(Request $request)
     {
         //dd($request);
-
         $validData = $request->validate(
             [
                 'propName'=>'required',
-                'propLocation'=>'required',
+                'propStreetNum'=>'required',
+                'propNeighborhood'=>'required',
+                'propCity'=>'required',
+                'propState'=>'required',
+                'propStatus'=>'required',
                 'propPrice'=>'required | decimal:2',
                 'propSurveillance'=>'nullable',
-                'propState'=>'required',
+                'propGarden'=>'nullable',
                 'propFront'=>'required | decimal:2',
                 'propDepth'=>'required | decimal:2',
                 'propTotal'=>'required | decimal:2',
@@ -66,7 +69,6 @@ class PropertiesController extends Controller
                 'propDetails'=>'required'
             ]
         );
-
         // surveillance
         if($request->propSurveillance === 'on')
         {
@@ -74,7 +76,6 @@ class PropertiesController extends Controller
         }else{
             $validData['propSurveillance']= 0;
         }
-
         // garden
        if($request->propGarden == 'on'){
         $validData['propGarden'] = 1;
@@ -83,8 +84,9 @@ class PropertiesController extends Controller
        }
 
         Properties::create($validData);
-        return redirect('Properties')->with('success', 'Creación Exitosa');
+        return redirect('Properties')->with('success', 'Creación Éxitosa!!');
     }
+
 
     /**
      * Display the specified resource.
@@ -126,10 +128,13 @@ class PropertiesController extends Controller
         $validData = $request->validate(
             [
                 'propName'=>'required',
-                'propLocation'=>'required',
+                'propStreetNum'=>'required',
+                'propNeighborhood'=>'required',
+                'propCity'=>'required',
+                'propState'=>'required',
+                'propStatus'=>'required',
                 'propPrice'=>'required | decimal:2',
                 'propSurveillance'=>'nullable',
-                'propState'=>'required',
                 'propFront'=>'required | decimal:2',
                 'propDepth'=>'required | decimal:2',
                 'propTotal'=>'required | decimal:2',

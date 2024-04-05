@@ -23,9 +23,11 @@
     </button>
   </div>
 {{-- End Corrouse --}}
-<div class="container d-flex w-100 bg-secondary-subtle align-items-center justify-content-around" style="padding-top: 5vh; padding-bottom:5vh">
+
+{{-- Container --}}
+<div class="container d-flex w-100 align-items-center justify-content-around" style="padding-top: 5vh; padding-bottom:5vh">
     <div class="d-grid w-50">
-        <div class="row row-fields" style="background-color: #909090; border-radius: 5px;">
+        <div class="row row-fields" style="background-color: #000; border-radius: 5px;">
             <div class="col col-fields col-3">
                 <span class="material-symbols-outlined fs-2" >paid</span>
                 <span class="sm-span">Precio</span>
@@ -35,6 +37,7 @@
             </div>
         </div>
 
+        {{-- Details --}}
         <div class="row row-fields">
             <div class="col col-fields col-3">
                 <span class="material-symbols-outlined">help_clinic</span>
@@ -44,7 +47,24 @@
                 {{$property->propDetails}}
             </div>
         </div>
+        {{-- End Details --}}
 
+        {{-- Location  --}}
+        <div class="row row-fields">
+            <div class="col col-fields col-3">
+                <span class="material-symbols-outlined fs-2">home_pin</span>
+                <span class="sm-span">Ubicación</span>
+            </div>
+            <div class="col col-values">
+                <p>{{$property->propStreetNum}}</p>
+                <p>- {{$property->propNeighborhood}}</p>
+                <p>- {{$property->propCity}}</p>
+                <p>- {{$property->propState}}</p>
+            </div>
+        </div>
+        {{-- end Location  --}}
+
+        {{-- Category BizType --}}
         <div class="row row-fields">
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">key_vertical</span>
@@ -61,7 +81,9 @@
                 {{$biztype->biztypeName}}
             </div>
         </div>
+        {{-- Category BizType --}}
 
+        {{-- Baths & Beds --}}
         <div class="row row-fields">
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">shower</span>
@@ -78,7 +100,11 @@
                 {{$property->propBedroom}}
             </div>
         </div>
+        {{-- End Baths & Beds --}}
 
+
+
+        {{-- Seizes --}}
         <div class="row row-fields">
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">square_foot</span>
@@ -88,7 +114,9 @@
             <div class="col col-values">Fondo -   {{$property->propDepth}} </div>
             <div class="col col-values" >Total -   {{$property->propTotal}}</div>
         </div>
+        {{-- End Sizes --}}
 
+        {{-- Garden & Parking --}}
         <div class="row row-fields">
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">nature</span>
@@ -104,19 +132,19 @@
             <div class="col col-values">
                 {{$property->propParking}}
             </div>
-
-
         </div>
+        {{-- end Garden & Parking --}}
+
+        {{-- Status & Surveillance  --}}
 
         <div class="row row-fields">
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">home_app_logo</span>
-                <span class="sm-span">Estado</span>
+                <span class="sm-span">Status</span>
             </div>
             <div class="col col-values">
-                    {{$property->propState}}
+                    {{$property->propStatus}}
             </div>
-
             <div class="col col-fields">
                 <span class="material-symbols-outlined fs-2">local_police</span>
                 <span class="sm-span">Vigilancia</span>
@@ -125,19 +153,12 @@
                 {{$property->propSurveillance}}
             </div>
         </div>
+        {{-- End Status & Surveillance  --}}
 
-        <div class="row row-fields">
-            <div class="col col-fields col-3">
-                <span class="material-symbols-outlined fs-2">home_pin</span>
-                <span class="sm-span">Ubicación</span>
-            </div>
-            <div class="col col-values">
-                {{$property->propLocation}}
-            </div>
-        </div>
 
     </div>
-
 </div>
+{{-- End Container --}}
+
 
 @endsection

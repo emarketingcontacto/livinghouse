@@ -47,6 +47,8 @@
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+
             {{-- Nombre --}}
             <div class="row mt-3">
                 <label for="propName" class="form-label">Nombre</label>
@@ -72,15 +74,51 @@
         </div>
 
 
-        {{-- Ubicación --}}
+        {{-- StreetNum --}}
         <div class="row mt-3">
-            <label for="propLocation" class="form-label">Ubicación</label>
-            <input type="text" name="propLocation" class="form-control" value="{{old('propLocation')}}" placeholder="Calle # , Colonia/Fraccionamiento, Ciudad, Estado">
+            <label for="propStreetNum" class="form-label">Calle y Número</label>
+            <input type="text" name="propStreetNum" class="form-control" value="{{old('propStreetNum')}}" placeholder="Calle # ">
             {{-- Error --}}
-            @error('propLocation')
+            @error('propStreetNum')
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+
+
+        {{-- Neighborhood --}}
+        <div class="row mt-3">
+            <label for="propNeighborhood" class="form-label">Colonia</label>
+            <input type="text" name="propNeighborhood" class="form-control" value="{{old('propNeighborhood')}}" placeholder="Colonia">
+            {{-- Error --}}
+            @error('propNeighborhood')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="row mt-3">
+
+          {{-- City --}}
+          <div class="col">
+            <label for="propCity" class="form-label">Ciudad</label>
+            <input type="text" name="propCity" class="form-control" value="{{old('propCity')}}" placeholder="Ciudad">
+            {{-- Error --}}
+            @error('propCity')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+         {{-- State --}}
+         <div class="col">
+            <label for="propState" class="form-label">Estado</label>
+            <input type="text" name="propState" class="form-control" value="{{old('propState')}}" placeholder="Estado">
+            {{-- Error --}}
+            @error('propState')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+        </div>
+
+    </div>
+
 
         <div class="row mt-3">
             {{-- Frente --}}
@@ -166,16 +204,16 @@
                 @enderror
 
             </div>
-            {{-- Entrega --}}
+            {{-- Entrega - Status --}}
             <div class="col">
-                <label for="propState" class="form-label">Entrega</label>
-                <select name="propState"  class="form-control dropdown w-100 text-center">
+                <label for="propStatus" class="form-label">Status</label>
+                <select name="propStatus"  class="form-control dropdown w-100 text-center">
                     <option value="">Elegir una opción</option>
                     <option value="Construccion">En Construcción</option>
                     <option value="Terminada">Terminada</option>
                 </select>
                 {{-- Error --}}
-                @error('propState')
+                @error('propStatus')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>

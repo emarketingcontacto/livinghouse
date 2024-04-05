@@ -41,7 +41,6 @@
                     <td>{{$property->propId}}</td>
                     <td>{{$property->propName}}</td>
                     <td>{{$property->categoryName}}</td>
-                    <td>{{$property->propLocation}}</td>
                     <td>{{$property->propFront}}</td>
                     <td>{{$property->propDepth}}</td>
                     <td>{{$property->propTotal}}</td>
