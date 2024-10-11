@@ -4,8 +4,10 @@ use App\Models\Images;
 use App\Models\Biztype;
 use App\Models\Categories;
 use App\Models\Properties;
-use App\Http\Controllers\Casas;
+use App\Models\Inmobiliarias;
 
+
+use App\Http\Controllers\Casas;
 use App\Http\Controllers\Terrenos;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Comercios;
@@ -22,6 +24,9 @@ use App\Http\Controllers\AvaluosController;
 use App\Http\Controllers\InfonavitController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PropertiesController;
+use App\Http\Controllers\InmobiliariasController;
+use App\Http\Controllers\ContactosController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,35 +41,68 @@ use App\Http\Controllers\PropertiesController;
 
 /* Home */
 Route::get('/', function () {
-    //$ImagesHero = Images::all();
-    // $imagesHero = Images::select('imageName', 'propId')->distinct('propId')->get();
-    // $imagesHero = Images::all()->unique('propId')->take(5);
-
-   /*
-   $imagesHero = Properties::addSelect(['propName'=> Images::select('imageName')
-   ->unique('images.propId')
-   ->whereColumn('images.propId', 'properties.propId')
-   ->limit(5) ])
-   ->get();
-   /*
-
-
-   $imagesHero=DB::table('properties')
-   ->whereIn('propeties.propId', $images)
-   ->get();
-   */
-
-    //$imagesHero= Images::all()->unique('propId')->take(5);
-
-
+// Hero
    $imagesHero = DB::table('properties')
    ->join('images', 'properties.propId', '=' ,'images.propId')
    ->select('properties.propName', 'properties.propId','properties.propDetails' ,'images.imageName')
    ->orderBy('properties.propId', 'asc')
-   ->limit(5)
    ->get();
 
-    return view('welcome', ['imagesHero'=> $imagesHero]);
+   //Houses
+   $LastHouses = DB::table('properties')
+   ->select ('properties.propName', 'properties.propId','properties.propDetails', 'categories.categoryName', 'biztypeName', 'images.imageName')
+   ->join('categories', 'categories.categoryId', '=','properties.categoryId' )
+   ->join('biztype', 'biztype.biztypeId', '=', 'properties.biztypeId')
+   ->join('images', 'images.propId', '=','properties.propId')
+   ->where('categories.categoryName','=','Casa')
+   ->orderBy('properties.propId', 'desc')
+   ->get();
+
+//Apartments
+$LastAppartments = DB::table('properties')
+   ->select ('properties.propName', 'properties.propId','properties.propDetails', 'categories.categoryName', 'biztypeName', 'images.imageName')
+   ->join('categories', 'categories.categoryId', '=','properties.categoryId' )
+   ->join('biztype', 'biztype.biztypeId', '=', 'properties.biztypeId')
+   ->join('images', 'images.propId', '=','properties.propId')
+   ->where('categories.categoryName','=','Departamento')
+   ->orderBy('properties.propId', 'desc')
+   ->get();
+
+//Terrenos
+$LastTerrenos = DB::table('properties')
+   ->select ('properties.propName', 'properties.propId','properties.propDetails', 'categories.categoryName', 'biztypeName', 'images.imageName')
+   ->join('categories', 'categories.categoryId', '=','properties.categoryId' )
+   ->join('biztype', 'biztype.biztypeId', '=', 'properties.biztypeId')
+   ->join('images', 'images.propId', '=','properties.propId')
+   ->where('categories.categoryName','=','Terreno')
+   ->orderBy('properties.propId', 'desc')
+   ->get();
+
+//Comercios
+$LastComercios = DB::table('properties')
+   ->select ('properties.propName', 'properties.propId','properties.propDetails', 'categories.categoryName', 'biztypeName', 'images.imageName')
+   ->join('categories', 'categories.categoryId', '=','properties.categoryId' )
+   ->join('biztype', 'biztype.biztypeId', '=', 'properties.biztypeId')
+   ->join('images', 'images.propId', '=','properties.propId')
+   ->where('categories.categoryName','=','Comercio')
+   ->orderBy('properties.propId', 'desc')
+   ->get();
+
+//Inmobiliarias
+$inmobiliarias = DB::table('inmobiliarias')
+->select('inmobiliarias.*')
+->orderBy('inmoName', 'desc')
+->limit(4)
+->get();
+
+    return view('welcome', [
+        'imagesHero'=> $imagesHero,
+        'LastHouses'=>$LastHouses,
+        'LastAppartments'=>$LastAppartments,
+        'LastTerrenos'=>$LastTerrenos,
+        'LastComercios'=>$LastComercios,
+        'inmobiliarias'=>$inmobiliarias
+        ]);
 });
 
 /* BizTypes */
@@ -110,6 +148,38 @@ Route::get('/Properties/{property}/edit', [PropertiesController::class,'edit'])-
 Route::put('/Properties/{property}/update', [PropertiesController::class,'update'])->name('Properties.update');
 //Delete
 Route::delete('/Properties/{property}/destroy', [PropertiesController::class,'destroy'])->name('Properties.destroy');
+
+/* Inmobiliarias */
+//Index
+Route::get('/Inmobiliarias', [InmobiliariasController::class, 'index'])->name('Inmobiliarias.index');
+//Show
+Route::get('/Inmobiliarias/{inmo}/show', [InmobiliariasController::class, 'show'])->name('Inmobiliarias.show');
+//Create
+Route::get('/Inmobiliarias/create', [InmobiliariasController::class,'create'])->name('Inmobiliarias.create');
+//Store
+Route::post('/Inmobiliarias', [InmobiliariasController::class,'store'])->name('Inmobiliarias.store');
+//Edit
+Route::get('/Inmobiliarias/{inmo}/edit', [InmobiliariasController::class,'edit'])->name('Inmobiliarias.edit');
+//Update
+Route::put('/Inmobiliarias/{inmo}/update', [InmobiliariasController::class,'update'])->name('Inmobiliarias.update');
+//Delete
+Route::delete('/Inmobiliarias/{inmo}/destroy', [InmobiliariasController::class,'destroy'])->name('Inmobiliarias.destroy');
+
+/*Contactos*/
+// Index
+Route::get('/Contactos', [ContactosController::class, 'index'])->name('Contactos.index');
+//Create
+Route::get('/Contactos/create', [ContactosController::class,'create'])->name('Contactos.create');
+//Store
+Route::post('/Contactos', [ContactosController::class,'store'])->name('Contactos.store');
+//Edit
+Route::get('/Contactos/{contacto}/edit', [ContactosController::class,'edit'])->name('Contactos.edit');
+//Update
+Route::put('/Contactos/{contacto}/update', [ContactosController::class,'update'])->name('Contactos.update');
+//Delete
+Route::delete('/Contactos/{contacto}/destroy', [ContactosController::class,'destroy'])->name('Contactos.destroy');
+
+
 
 /*Images*/
 //Index

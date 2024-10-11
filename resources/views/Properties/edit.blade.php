@@ -57,6 +57,27 @@
             </div>
         </div>
 
+           {{-- Inmobiliarias --}}
+           <div class="row">
+            <div class="col">
+                <label for="InmoId">Inmobiliaria</label>
+                <select name="inmoId" class="form-control dropdown w-100 text-center">
+                    @foreach ($inmobiliarias as $inmo)
+                        @if ($inmo->inmoId === $property->inmoId)
+                            <option value="{{$inmo->inmoId}}" selected>{{$inmo->inmoName}} </option>
+                        @endif
+                        <option value="{{$inmo->inmoId}}">{{$inmo->inmoName}}</option>
+                    @endforeach
+                </select>
+                {{-- Error --}}
+                @error('InmoId')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+
+            </div>
+        </div>
+
+
          {{-- Details --}}
          <div class="row mt-3">
             <label for="propDetails" class="form-label">Detalles</label>

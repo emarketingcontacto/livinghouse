@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Images;
 use App\Models\Biztype;
 use App\Models\Categories;
+use App\Models\Inmobiliarias;
 use App\Models\Properties;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,12 +20,11 @@ class PropertiesController extends Controller
     public function index()
     {
         //$properties = Properties::all();
-
         $properties = DB::table('properties')
         ->join('categories', 'properties.categoryId','=', 'categories.categoryId')
-        ->select('properties.*', 'categories.categoryName')
+        ->join('inmobiliarias', 'inmobiliarias.inmoId', '=', 'properties.inmoId')
+        ->select('properties.*', 'categories.categoryName', 'inmobiliarias.*')
         ->get();
-
         $categories = Categories::all();
         $biztypes = Biztype::all();
         return view('Properties.index', ['properties'=>$properties, 'categories'=> $categories, 'biztypes'=>$biztypes]);
@@ -37,8 +37,13 @@ class PropertiesController extends Controller
     {
         $categories = Categories::all();
         $biztypes = Biztype::all();
+       // $inmobiliarias = Inmobiliarias::all();
+       $inmobiliarias = DB::table('inmobiliarias')
+       ->select('inmoId', 'inmoName')
+       ->orderBy('inmoName', 'asc')
+       ->get();
 
-        return view('Properties.create',['categories'=> $categories, 'biztypes'=>$biztypes]);
+        return view('Properties.create',['categories'=> $categories, 'biztypes'=>$biztypes , 'inmobiliarias'=>$inmobiliarias]);
     }
 
     /**
@@ -66,7 +71,8 @@ class PropertiesController extends Controller
                 'propBaths'=>'nullable',
                 'categoryId'=>'required',
                 'biztypeId'=>'required',
-                'propDetails'=>'required'
+                'propDetails'=>'required',
+                'inmoId'=>'required'
             ]
         );
         // surveillance
@@ -93,15 +99,18 @@ class PropertiesController extends Controller
      */
     public function show(Properties $property)
     {
-        //dd($property);
-        //dd($images);
         $images = DB::table('images')->where('propId', '=' , $property->propId)->get();
         //biztype
         $biztype = DB::table('biztype')->where('biztypeId', '=', $property->biztypeId)->first();
         //category
         $category = DB::table('categories')->where('categoryId', '=', $property->categoryId)->first();
 
-        return view('Properties.show', ['property'=>$property , 'images'=>$images, 'biztype'=>$biztype,'category'=>$category]);
+        //inmobiliarias
+        $inmobiliaria = DB::table('inmobiliarias')->where('inmoId', '=', $property->inmoId)->first();
+        //Cotacto
+        $contacto =DB::table('contactos')->where('inmoId', '=', $inmobiliaria->inmoId)->first();
+
+        return view('Properties.show', ['property'=>$property , 'images'=>$images, 'biztype'=>$biztype,'category'=>$category, 'inmobiliaria'=>$inmobiliaria, 'contacto'=>$contacto]);
     }
 
     /**
@@ -114,9 +123,14 @@ class PropertiesController extends Controller
 
         $imagesCount = Images::Where('propId', $property->propId)->get()->count();
 
-        //dd($imagesCount);
+         //inmobiliarias
+         $inmobiliarias = DB::table('inmobiliarias')
+         ->select('inmoId', 'inmoName')
+         ->orderBy('inmoName', 'asc')
+         ->get();
 
-        return view('Properties.edit', ['property'=>$property, 'categories'=>$categories, 'biztypes'=>$biztypes , 'imagesCount'=>$imagesCount]);
+
+        return view('Properties.edit', ['property'=>$property, 'categories'=>$categories, 'biztypes'=>$biztypes , 'imagesCount'=>$imagesCount, 'inmobiliarias'=>$inmobiliarias]);
     }
 
     /**
@@ -143,7 +157,8 @@ class PropertiesController extends Controller
                 'propBaths'=>'nullable',
                 'categoryId'=>'required',
                 'biztypeId'=>'required',
-                'propDetails'=>'required'
+                'propDetails'=>'required',
+                'inmoId'=>'required'
             ]
         );
 

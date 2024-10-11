@@ -4,7 +4,7 @@
 
 <h1>Nueva Propiedad</h1>
 
-<div class="container d-flex mb-5 p-3 bg-light" style="justify-content:center" >
+<div class="container form-container" style="justify-content:center" >
 
 
 {{-- form --}}
@@ -48,6 +48,24 @@
                 @enderror
             </div>
 
+            {{-- Inmobiliarias --}}
+            <div class="row">
+                <div class="col">
+                    <label for="InmoId">InmoId</label>
+                    <select name="inmoId" class="form-control dropdown w-100 text-center">
+                        <option value="">Elegir una opción</option>
+                        @foreach ($inmobiliarias as $inmo)
+                            <option value="{{$inmo->inmoId}}">{{$inmo->inmoName}}</option>
+                        @endforeach
+                    </select>
+
+                    {{-- Error --}}
+                    @error('InmoId')
+                        <div class="alert alert-danger">{{ $message }}</div>
+                    @enderror
+
+                </div>
+            </div>
 
             {{-- Nombre --}}
             <div class="row mt-3">

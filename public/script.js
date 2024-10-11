@@ -1,7 +1,8 @@
 document.onload = getSuccess();
 
-function getSuccess() {
 
+//Controls the success label
+function getSuccess() {
     setTimeout(function () {
         var success = document.getElementById('success');
         if (success !== null) {
@@ -10,8 +11,7 @@ function getSuccess() {
 }
 
 
-// add buttons for properties images
-
+// add buttons for properties images control
 function addImageControl() {
 
     const divImages = document.getElementById('imagesAdd');

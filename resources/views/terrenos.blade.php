@@ -34,7 +34,12 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex">
                             <h3 class="text-center"><span class="material-symbols-outlined fs-2">home_pin</span></h3>
-                            <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propLocation}} </p>
+                            {{-- <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propLocation}} </p> --}}
+                            <div class="flex flex-column">
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propStreetNum}} </p>
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propNeighborhood}} </p>
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propCity}} -  {{$propiedad->propState}}  </p>
+                            </div>
                         </li>
 
                         <li class="list-group-item d-flex">

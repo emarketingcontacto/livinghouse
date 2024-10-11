@@ -20,15 +20,13 @@
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
+                <th>Inmobiliaria</th>
                 <th>Categoria</th>
-                <th>Ubicación</th>
-                <th>Frente</th>
-                <th>Profundidad</th>
-                <th>Total</th>
+                <th>M Totales</th>
                 <th>Baños</th>
                 <th>Recamaras</th>
-                <th>Estacionamiento</th>
                 <th>Jardín</th>
+                <th>Colonia</th>
                 <th>Estado</th>
                 <th>Vigilancia</th>
                 <th>Precio</th>
@@ -40,15 +38,16 @@
                 <tr>
                     <td>{{$property->propId}}</td>
                     <td>{{$property->propName}}</td>
+                    <td>
+                        <img src="{{asset('storage/'.$property->inmoLogo)}}" alt="{{$property->inmoLogo}}" width="50px" height="50px"></td>
+                    {{-- <td>{{$property->inmoId}}</td> --}}
                     <td>{{$property->categoryName}}</td>
-                    <td>{{$property->propFront}}</td>
-                    <td>{{$property->propDepth}}</td>
                     <td>{{$property->propTotal}}</td>
                     <td class="text-center">{{$property->propBaths}}</td>
                     <td class="text-center">{{$property->propBedroom}}</td>
-                    <td class="text-center">{{$property->propParking}}</td>
                     <td class="text-center">
                         @if ($property->propGarden === 1) {{'Si'}} @else {{'No'}} @endif </td>
+                    <td>{{$property->propNeighborhood}}</td>
                     <td>{{$property->propState}}</td>
                     <td class="text-center"> @if ($property->propSurveillance == 1) {{'Si'}} @else {{'No'}} @endif </td>
                     <td>{{$property->propPrice}}</td>

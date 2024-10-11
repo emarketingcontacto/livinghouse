@@ -4,89 +4,202 @@
 <div style="margin-top: -6vh">
     {{-- ATTENTION --}}
     @include('Partials/_heroIndex')
-    <div class="aida">
-    {{-- INTEREST --}}
-        <div class="interest">
-            <div class="container container-heading">
-                <h2> ¿Soñaste con una casa nueva?  </h2>
-                <h3>¡Hazla realidad en 2024!</h3>
-                <span>
-                    <ul>
-                        <li style="list-style:none">Imagina la luz de la mañana entrando por la ventana de tu habitación, iluminando una vista que siempre has deseado.</li>
-                        <li style="list-style:none">Imagina noches de película en una sala de estar acogedora que se siente como un abrazo.</li>
-                        <li style="list-style:none">Imagina finalmente tener el espacio para todas tus pasiones, pasatiempos y seres queridos.</li>
-                    </ul>
+</div>
 
-                </span>
-                <p></p>
-                <span>¡Deja de imaginar y empieza a vivir! En este emocionante año nuevo </span>
-                <p></p>
-                <span>
-                    <strong>LivingHouse</strong> está aquí para hacer que la casa de tus sueños sea una realidad.
-                </span>
-            </div>
-        </div>{{-- DESIRE --}}
-        <div class="desire" >
-            <div class="container container-heading">
-                <h2>Somos más que agentes inmobiliarios</h2>
-                <span>
-                    Somos constructores de hogares. Sabemos que comprar o vender una propiedad puede ser abrumador, por eso estamos aquí para guiarte en cada paso del camino.
-                </span>
-                <p></p>
-                <h3>Te ofrecemos:</h3>
-                <ul>
-                    <li style="list-style:none">
-                        Una cartera diversa de hermosas propiedades: Desde acogedores condominios urbanos hasta extensas haciendas suburbanas, tenemos algo para cada sueño y presupuesto.
-                    </li>
-                    <li style="list-style:none">
-                        Agentes expertos que escuchan y comprenden tus necesidades: No solo vendemos casas, construimos relaciones.
-                    </li>
-                    <li style="list-style:none">
-                        Proceso de transacción sin problemas: Nos encargamos de todo el papeleo y el trabajo preliminar, para que puedas concentrarte en la emoción de mudarte.
-                    </li>
-                    <li style="list-style:none">
-                        Compromiso inquebrantable con tu satisfacción: No estamos contentos hasta que estés encantado con tu nuevo hogar.
-                    </li>
-                </ul>
-            </div>
+<div class="main-home">
+
+    {{--home section Houses --}}
+    <div class="home-section">
+        <div class="home-subtitle">
+            <h2>Últimas Casas</h2>
         </div>
-        {{-- ACTION  --}}
-        <div class="action">
-            <div class="action-col">
-                <div class="container">
-                    <div class="text-center contact">
-                        <a href="{{route('Contact')}}">
-                            <span class="material-symbols-outlined" style="color:#E8BC15; font-size:5rem">book_4</span>
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <span>
-                            ¿Estás listo para convertir tu sueño en tu dirección?
-                        </span>
-                        <p> Contáctanos hoy mismo para una consulta gratuita y hagamos que 2024 sea el año en que encuentres la casa de tus sueños.</p>
+
+        {{-- Last Houses --}}
+        <div class="lastDivs">
+            @php
+                $houseId = 0;
+                $houseCounter = 0;
+            @endphp
+
+            @foreach ($LastHouses as $lasthouse)
+                {{-- Remove duplicate houses w/id --}}
+                @if ($houseId !== $lasthouse->propId)
+                    {{-- show only 4 houses--}}
+                    @php $houseCounter +=1; @endphp
+                    @if ($houseCounter < 5)
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{asset('storage/'.$lasthouse->imageName)}}" class="card-img-top" alt="..." width="290px" height="160px">
+                            <div class="card-body">
+                            <h5 class="card-title text-center">{{$lasthouse->propName}}</h5>
+                            <p class="card-text bizType">{{$lasthouse->biztypeName}}</p>
+                            <div class="card-button">
+                                <a href="{{route('Properties.show', ['property'=>$lasthouse->propId])}}" class="btn btn-sm button" style="font-size: .8rem">Más información...</a>
+                            </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+                @php
+                    $houseId = $lasthouse->propId;
+
+                @endphp
+
+            @endforeach
+        </div>
+        {{-- End last Houses --}}
+    </div>
+    {{--end home section Houses --}}
+
+    {{--home section Appartments --}}
+    <div class="home-section">
+        <div class="home-subtitle">
+            <h2>Últimos Departamentos</h2>
+        </div>
+        <div class="lastDivs">
+            @php
+                $appartmentId = 0;
+                $appartmentCounter = 0;
+            @endphp
+
+            @foreach ($LastAppartments as $lastappartment)
+                {{-- Remove duplicate houses w/id --}}
+                @if ($appartmentId !== $lastappartment->propId)
+                    {{-- show only 4 houses--}}
+                    @php $appartmentCounter +=1; @endphp
+                    @if ($appartmentCounter < 5)
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{asset('storage/'.$lastappartment->imageName)}}" class="card-img-top" alt="..." width="290px" height="160px">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{$lastappartment->propName}}</h5>
+                                <p class="card-text bizType">{{$lastappartment->biztypeName}}</p>
+                                <div class="card-button">
+                                    <a href="{{route('Properties.show', ['property'=>$lastappartment->propId])}}" class="btn btn-sm button" style="font-size: .8rem">Más información...</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+                @php
+                    $appartmentId = $lastappartment->propId;
+
+                @endphp
+
+            @endforeach
+        </div>
+    </div>
+    {{--end section Appartments --}}
+
+
+
+    {{--home section Terrenos --}}
+    <div class="home-section">
+        <div class="home-subtitle">
+            <h2>Últimos Terrenos</h2>
+        </div>
+        <div class="lastDivs">
+            @php
+                $terrenoId = 0;
+                $terrenoCounter = 0;
+            @endphp
+
+            @foreach ($LastTerrenos as $lastterreno)
+                {{-- Remove duplicate houses w/id --}}
+                @if ($terrenoId !== $lastterreno->propId)
+                    {{-- show only 4 houses--}}
+                    @php $terrenoCounter +=1; @endphp
+                    @if ($terrenoCounter < 5)
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{asset('storage/'.$lastterreno->imageName)}}" class="card-img-top" alt="..." width="290px" height="160px">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{$lastterreno->propName}}</h5>
+                                <p class="card-text bizType">{{$lastterreno->biztypeName}}</p>
+                                <div class="card-button">
+                                    <a href="{{route('Properties.show', ['property'=>$lastterreno->propId])}}" class="btn btn-sm button" style="font-size: .8rem">Más información...</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+                @php
+                    $terrenoId = $lastterreno->propId;
+
+                @endphp
+
+            @endforeach
+        </div>
+    </div>
+    {{--end section Terrenos --}}
+
+    {{--home section Comercios --}}
+    <div class="home-section">
+        <div class="home-subtitle">
+            <h2>Últimos Comercios</h2>
+        </div>
+        <div class="lastDivs">
+            @php
+                $comercioId = 0;
+                $comercioCounter = 0;
+            @endphp
+
+            @foreach ($LastComercios as $lastcomercio)
+                {{-- Remove duplicate houses w/id --}}
+                @if ($comercioId !== $lastcomercio->propId)
+                    {{-- show only 4 houses--}}
+                    @php $comercioCounter +=1; @endphp
+                    @if ($comercioCounter < 5)
+                        <div class="card" style="width: 18rem;">
+                            <img src="{{asset('storage/'.$lastcomercio->imageName)}}" class="card-img-top" alt="..." width="290px" height="160px">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{$lastcomercio->propName}}</h5>
+                                <p class="card-text bizType">{{$lastcomercio->biztypeName}}</p>
+                                <div class="card-button">
+                                    <a href="{{route('Properties.show', ['property'=>$lastcomercio->propId])}}" class="btn btn-sm button" style="font-size: .8rem">Más información...</a>
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endif
+
+                @php
+                    $comercioId = $lastcomercio->propId;
+
+                @endphp
+
+            @endforeach
+        </div>
+    </div>
+    {{--end section Comercios --}}
+
+    {{-- Inmobiliarias --}}
+    <div class="home-section">
+        <div class="home-subtitle">
+            <h2>Ultimas Inmobiliarias</h2>
+        </div>
+        <div class="lastDivs">
+            @foreach ($inmobiliarias as $inmo)
+                <div class="card" style="width:18rem">
+                    <img src="{{asset('storage/'.$inmo->inmoLogo)}}" class="card-img-top" alt="{{$inmo->inmoName}}" width="290px" height="160px">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">{{$inmo->inmoName}}</h5>
+                        <p class="card-button">
+                            <a href="{{route('Inmobiliarias.show', ['inmo'=>$inmo->inmoId])}}" class="btn btn-sm button" style="font-size: .8rem">Más información...</a>
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="action-col">
-                <div class="container">
-                    <div class="text-center contact">
-                        <a href="tel:+4794117466">
-                            <span class="material-symbols-outlined" style="color:#E8BC15; font-size:5rem;">
-                                ring_volume
-                            </span>
-                        </a>
-                    </div>
-                    <div class="text-center">
-                        <span>
-                            Llámanos para explorar anuncios, recorrer vecindarios y dar el primer paso hacia la casa de tus sueños.
-                        </span>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
-    </div> <!-- end AIDA -->
-</div><!-- end main content -->
+    </div>
 
-@endsection
+    {{-- End Inmobiliarias --}}
+
+
+
+
+</div> <!-- end main-home -->
+
+@endsection <!-- end main content -->
 
 

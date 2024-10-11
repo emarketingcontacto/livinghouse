@@ -35,12 +35,17 @@ class Properties extends Model
         'propDetails',
         'propSurveillance',
         'categoryId',
-        'biztypeId'
+        'biztypeId',
+        'inmoId'
     ];
 
     public function biztype(): HasOne
     {
         return $this->hasOne(Biztype::class);
+    }
+
+    public function inmoId(): HasOne{
+        return $this->hasOne(Inmobiliarias::class);
     }
 
     public function categories(): HasOne

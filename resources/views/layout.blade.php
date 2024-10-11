@@ -37,6 +37,11 @@
                   <li class="nav-item">
                     <a class="nav-link" href="{{route('Comercios')}}">Comercios</a>
                   </li>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{route('Inmobiliarias.index')}}">Inmobiliarias</a>
+                  </li>
+
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Servicios
@@ -59,6 +64,8 @@
                         <li><a class="dropdown-item" href="{{route('Categories.index')}}">Categorias</a></li>
                         <li><a class="dropdown-item" href="{{route('Biztype.index')}}">Tipos de Negocio</a></li>
                         <li><a class="dropdown-item" href="{{route('Properties.index')}}">Propiedades</a></li>
+                        <li><a class="dropdown-item" href="{{route('Inmobiliarias.index')}}">Inmobiliarias</a></li>
+                        <li><a class="dropdown-item" href="{{route('Contactos.index')}}">Contactos</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('User.index')}}">Usuarios</a></li>
                         </ul>

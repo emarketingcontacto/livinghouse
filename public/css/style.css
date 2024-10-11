@@ -1,6 +1,21 @@
+@media(max-width:800px){
+    .propeperties-property{
+        width: 100% !important;;
+    }
+    .properties-container {
+        width: 100% !important;
+    }
+
+    .properties-info {
+        width: 100% !important;
+    }
+}
+
+
 /*Color Palette */
 :root{
     --secondary: #E8BC15;
+    --bg-light: #f8f9fa;
 }
 /* Fonts */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;1,200&family=Rubik:ital,wght@1,500&display=swap');
@@ -33,7 +48,6 @@ header{
     margin-top: 20vh;
     margin-bottom: 10vh;
     height: auto;
-
 }
 
 footer{
@@ -42,7 +56,7 @@ footer{
     bottom: 0;
     width: 100%;
     height: 10vh;
-    background-color: #000;
+    background-color: rgba(0,0,0,0.50);
     color: var(--secondary);
     z-index: 99;
     display: flex;
@@ -50,6 +64,7 @@ footer{
     justify-content: space-evenly;
 }
 
+/* Home */
 .carousel{
     margin-bottom: 1vh;
 }
@@ -60,54 +75,54 @@ footer{
     color:#f4f4f4;
     border-radius: 20%;
 }
-.aida{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+
+.main-home{
     width: 100vw;
     height: auto;
-    align-items: flex-start;
-   justify-content: space-evenly;
-   gap:.3vw;
 }
 
-.interest{
-    background-color: #f5f5f5;
+.home-section{
     width: 100%;
-    height: 100%;
-    text-align: center;
-    padding-top: 5vh;
-    padding-bottom: 5vh;
+    height: auto;
+    margin-top: 10px;
 }
 
-.desire{
-    width: 100%;
-    height: 100%;
+.home-section h2{
     text-align: center;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
 }
 
-.action{
-    width: 98%;
-    height: 50vh;
+.home-subtitle{
     display: flex;
-    gap: 2vw;
+    width: 100%;
+    background-color:#000;
+    color: var(--secondary);
     align-items: center;
-    justify-content:space-evenly;
-    margin-bottom: 5vh;
-}
-
-.action-col{
-    background-color: #f5f5f5;
-    height: 100%;
-    display: flex;
     justify-content: center;
+    margin-bottom: 10px;
+}
+.lastDivs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     align-items: center;
-    width: 45vw;
+    width: 100%;
 }
 
-.container-heading h2,h3{
+.bizType{
+    color: var(--secondary);
+    border-radius: 10px;
+    font-size: .7rem;
+    background-color: #000;
+    text-align: center;
+}
+
+.card-button{
+    margin: auto;
+    text-align: center;
+}
+/* end Home */
+
+.container-heading h2,h3 {
     font-family: 'Poppins', sans-serif;
     color: var(--secondary);
 }
@@ -183,4 +198,132 @@ footer{
 
 .contact span:hover{
     color:#000 !important;
+}
+
+.yellow-font{
+    color: var(--secondary);
+}
+
+
+/* Inmobiliaria */
+
+.form-container{
+    display: flex;
+    margin-bottom: 5px;
+    width: 100vw;
+    height: auto;
+    background-color: var(--bg-light);
+    justify-content: center;
+}
+
+.form-controls{
+    display: flex;
+    margin-top: 3px;
+    gap: 2px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 5px;
+}
+
+.show-title{
+    display: flex;
+    width: 100%;
+    background-color: #000;
+    color: var(--secondary);
+    justify-content: center;
+}
+
+.show-body{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    justify-content:center;
+    align-items: center;
+    background-color: var(--bg-light);
+
+}
+
+.show-image{
+    background-color: var(--bg-light);
+}
+
+.show-data{
+    display: grid;
+    grid-template-columns: 200px 400px;
+    grid-template-rows: max-content;
+}
+
+.data-title{
+    font-weight:bold;
+    text-align: center;
+    border-bottom: #E8BC15 1px solid;
+}
+.data-item{
+    border-bottom: #E8BC15 1px solid;
+}
+
+.show-contactos{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 25vw;
+    height: 50vh;
+    margin-left: 3vh;
+}
+
+.contacto-title{
+    font-weight: bold;
+}
+
+.properties{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
+    align-items: center;
+    justify-content: center;
+    margin-top:3vh;
+}
+
+.properties-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.properties-container{
+    display: flex;
+    width: 70%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.properties-main{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.properties-info{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    align-items: center;
+    justify-content: start;
+}
+
+.properties-contacto{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.propeperties-property{
+    display: grid;
+    width: 60%;
 }
