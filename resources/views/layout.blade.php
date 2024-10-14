@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <script src="{{asset('script.js')}}"></script>
-    <title>LivingHouse</title>
+    <title>Bienes Raices Guanajuato</title>
 </head>
 <body>
     <Header>

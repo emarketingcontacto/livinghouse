@@ -26,7 +26,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\PropertiesController;
 use App\Http\Controllers\InmobiliariasController;
 use App\Http\Controllers\ContactosController;
-
+use Illuminate\Support\Facades\Artisan;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,6 +38,11 @@ use App\Http\Controllers\ContactosController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+/* Images Link */
+// Route::get('/linkstorage', function(){
+//     Artisan::call('storage:link');
+// });
 
 /* Home */
 Route::get('/', function () {
