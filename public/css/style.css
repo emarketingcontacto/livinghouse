@@ -99,7 +99,7 @@ footer{
 .home-subtitle{
     display: flex;
     width: 100%;
-    background-color:#000;
+    background-color:var(--bg-light);
     color: var(--secondary);
     align-items: center;
     justify-content: center;
@@ -319,6 +319,7 @@ footer{
     padding-bottom: 5vh;
     align-items: center;
     justify-content: start;
+    width: 25vw;
 }
 
 .properties-contacto{
@@ -331,4 +332,15 @@ footer{
 .propeperties-property{
     display: grid;
     width: 60%;
+}
+
+.property-gallery{
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content:space-evenly;
+    gap: 2px;
+    width: 100%;
+    height: auto;
+    background-color: #000;
 }

@@ -52,3 +52,58 @@ function getTotal() {
 }
 
 
+function getInmobiliaria() {
+    const InmobiliariaId = document.getElementById('inmoId').value;
+    document.getElementById('inmobiliariaId').value = InmobiliariaId;
+    document.cookie = "inmobiliaria=" + InmobiliariaId;
+    //sessionStorage.setItem('inmobiliaria', InmobiliariaId);
+
+ }
+
+function getContactos() {
+    const InmobiliariaId = document.getElementById('inmoId').value;
+    //fetch
+    const url = window.location.origin + "/api/v1/customersapi/"+ InmobiliariaId;
+
+    const request = new Request(url, {
+        method: 'GET',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/Json' }
+    });
+    fetch(request)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error, status= ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            usingData(data)
+        })
+        .catch((error) => {
+            console.log(error)
+        });
+
+    function usingData(contactosData) {
+
+        //Variables
+        const contactosSelect = document.getElementById('contactoId');
+        try {
+            if (!contactosData.hasOwnProperty("data")) {
+                const contactos = contactosData;
+                for (const contacto of contactos) {
+                    let opt = document.createElement('option');
+                    opt.value = contacto.contactoId;
+                    opt.innerHTML = contacto.contactoName;
+                    contactosSelect.appendChild(opt);
+                }
+            } else {
+                throw new Error("Invalid data structure")
+            }
+
+        } catch (error) {
+            console.log(error.message)
+        }
+    }
+
+}

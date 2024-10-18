@@ -21,9 +21,8 @@ class Properties extends Model
         'propName',
         'propBaths',
         'propBedroom',
-        'propDepth',
-        'propFront',
-        'propTotal',
+        'propBuilt',
+        'propTerrain',
         'propGarden',
         'propStreetNum',
         'propNeighborhood',
@@ -33,10 +32,12 @@ class Properties extends Model
         'propPrice',
         'propStatus',
         'propDetails',
+        'propDescription',
         'propSurveillance',
         'categoryId',
         'biztypeId',
-        'inmoId'
+        'inmoId',
+        'contactoId'
     ];
 
     public function biztype(): HasOne

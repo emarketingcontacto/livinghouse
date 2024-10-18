@@ -36,9 +36,11 @@
 
                     <div class="card-body">
                         <h5 class="card-title text-center">{{$propiedad->propName}}</h5>
+                        <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propDescription}} </p>
                         <p class="text-center bg-dark" style="color:#E8BC15; border-radius:10px; font-size:.7rem">{{$propiedad->biztypeName}}</p>
                     </div>
                     <ul class="list-group list-group-flush">
+
                         {{-- Detalles --}}
                         <li class="list-group-item d-flex flex-column">
                             <h3 class="text-center"><span class="material-symbols-outlined">help_clinic</span></h3>
@@ -50,8 +52,7 @@
                         <li class="list-group-item d-flex flex-column justify-content-between align-items-center">
                             <h3 class="text-center"><span class="material-symbols-outlined fs-2">home_pin</span></h3>
                             <div class="flex flex-column">
-                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propStreetNum}} </p>
-                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propNeighborhood}} </p>
+                                <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propStreetNum}} , {{$propiedad->propNeighborhood}},  </p>
                                 <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propCity}} -  {{$propiedad->propState}}  </p>
                             </div>
                         </li>
@@ -63,9 +64,8 @@
                                 <h3 class="text-center"><span class="material-symbols-outlined fs-2">square_foot</span></h3>
                             </div>
                             <div class="flex">
-                                <p class="text-center p-1" style="font-size:.8rem">Fente: {{$propiedad->propFront}}</p>
-                                <p class="text-center p-1" style="font-size:.8rem">Fondo: {{$propiedad->propDepth}}</p>
-                                <p class="text-center p-1" style="font-size:.8rem">Total: {{$propiedad->propTotal}}</p>
+                                <p class="text-center p-1" style="font-size:.8rem">Construcción(m2): {{$propiedad->propBuilt}}</p>
+                                <p class="text-center p-1" style="font-size:.8rem">Terreno(m2): {{$propiedad->propTerrain}}</p>
                             </div>
                         </li>
                         {{-- end Seize --}}

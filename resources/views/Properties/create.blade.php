@@ -24,7 +24,7 @@
                 <select name="categoryId" class="form-control dropdown w-100 text-center">
                     <option value=""> Elegir una opción </option>
                     @foreach ($categories as $category)
-                        <option value="{{$category->categoryId}}" {{$category->categoryId === old('categoryId'? 'selected': '')}}>{{$category->categoryName}}</option>
+                        <option value="{{$category->categoryId}}" {{$category->categoryId == old('categoryId') ? 'selected':''}}>{{$category->categoryName}}</option>
                     @endforeach
                 </select>
                  {{-- Error --}}
@@ -39,7 +39,7 @@
                 <select name="biztypeId" id="" class="form-control dropdown w-100 text-center">
                         <option value="">Elegir una opción</option>
                     @foreach ($biztypes as $biztype)
-                        <option value="{{$biztype->biztypeId}}">{{$biztype->biztypeName}}</option>
+                        <option value="{{$biztype->biztypeId}}" {{$biztype->biztypeId == old('biztypeId') ? 'selected' : ''}}>{{$biztype->biztypeName}}</option>
                     @endforeach
                 </select>
                 {{-- Error --}}
@@ -51,11 +51,11 @@
             {{-- Inmobiliarias --}}
             <div class="row">
                 <div class="col">
-                    <label for="InmoId">InmoId</label>
-                    <select name="inmoId" class="form-control dropdown w-100 text-center">
+                    <label for="InmoId">Inmobiliaria</label>
+                    <select name="inmoId" id="inmoId" class="form-control dropdown w-100 text-center bg-light" onchange="getContactos()">
                         <option value="">Elegir una opción</option>
                         @foreach ($inmobiliarias as $inmo)
-                            <option value="{{$inmo->inmoId}}">{{$inmo->inmoName}}</option>
+                            <option value="{{$inmo->inmoId}}" {{old('inmoId') == $inmo->inmoId ? 'selected': ''}}>{{$inmo->inmoName}} </option>
                         @endforeach
                     </select>
 
@@ -67,6 +67,10 @@
                 </div>
             </div>
 
+            {{-- contactos --}}
+            <x-ContactoInmo></x-ContactoInmo>
+
+
             {{-- Nombre --}}
             <div class="row mt-3">
                 <label for="propName" class="form-label">Nombre</label>
@@ -74,9 +78,21 @@
                 {{-- Error --}}
                 @error('propName')
                     <div class="alert alert-danger">{{$message}}</div>
-
                 @enderror
             </div>
+
+        </div>
+
+          {{-- Description --}}
+          <div class="row mt-3">
+            <label for="propDescription" class="form-label">Descripción</label>
+            <textarea name="propDescription" cols="30" rows="10" style="resize: none">
+                {{old('propDescription')}}
+            </textarea>
+            {{-- Error --}}
+            @error('propDescription')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
         </div>
 
         {{-- Details --}}
@@ -139,39 +155,25 @@
 
 
         <div class="row mt-3">
-            {{-- Frente --}}
+            {{-- Built --}}
             <div class="col">
-                <label for="propFront" class="form-label">Frente (mts2)</label>
-                <input type="text" id="propFront" name="propFront" class="form-control" style="text-align: end" value="{{old('propFront')}}" placeholder="00.00">
+                <label for="propBuilt" class="form-label">Construcción (mts2)</label>
+                <input type="text" id="propBuilt" name="propBuilt" class="form-control" style="text-align: end" value="{{old('propBuilt')}}" placeholder="00">
                 {{-- Error --}}
-                @error('propFront')
+                @error('propBuilt')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
             {{-- Profundidad --}}
             <div class="col">
-                <label for="propDepth" class="form-label">Profundidad (mts2)</label>
-                <input type="text" id="propDepth" name="propDepth" class="form-control" style="text-align: end" value="{{old('propDepth')}}" placeholder="00.00">
+                <label for="propTerrain" class="form-label">Terreno (mts2)</label>
+                <input type="text" id="propTerrain" name="propTerrain" class="form-control" style="text-align: end" value="{{old('propTerrain')}}" placeholder="00">
                  {{-- Error --}}
-                 @error('propDepth')
+                 @error('propTerrain')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- Total --}}
-            <div class="col">
-                <label for="propTotal" class="form-label">Total (mts2)</label>
-                <input type="text" id="propTotal"
-                  name="propTotal"
-                  class="form-control"
-                  style="text-align: end"
-                  value="{{old('propTotal')}}"
-                  placeholder="00.00"
-                  onfocus="getTotal()">
-                {{-- Error --}}
-                @error('propTotal')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+
         </div>
 
         <div class="row mt-3">
@@ -227,8 +229,8 @@
                 <label for="propStatus" class="form-label">Status</label>
                 <select name="propStatus"  class="form-control dropdown w-100 text-center">
                     <option value="">Elegir una opción</option>
-                    <option value="Construccion">En Construcción</option>
-                    <option value="Terminada">Terminada</option>
+                    <option value="Construccion" {{old('propStatus')=="Construccion" ? 'selected' : ''}}>En Construcción</option>
+                    <option value="Terminada" {{old('propStatus')=="Terminada" ? 'selected' : ''}}>Terminada</option>
                 </select>
                 {{-- Error --}}
                 @error('propStatus')

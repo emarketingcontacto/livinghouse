@@ -175,6 +175,7 @@
             <p>{{$contacto->contactoPhone}}</p>
             <p>{{$contacto->contactoEmail}}</p>
         </div>
+        <x-propertyGallery :propID="$property->propId"></x-propertyGallery>
     </div>
 </div>
  {{-- End Container --}}

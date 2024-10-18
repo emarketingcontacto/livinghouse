@@ -22,7 +22,8 @@
                 <th>Nombre</th>
                 <th>Inmobiliaria</th>
                 <th>Categoria</th>
-                <th>M Totales</th>
+                <th>Construcción(m2)</th>
+                <th>Terreno(m2)</th>
                 <th>Baños</th>
                 <th>Recamaras</th>
                 <th>Jardín</th>
@@ -42,7 +43,10 @@
                         <img src="{{asset('storage/'.$property->inmoLogo)}}" alt="{{$property->inmoLogo}}" width="50px" height="50px"></td>
                     {{-- <td>{{$property->inmoId}}</td> --}}
                     <td>{{$property->categoryName}}</td>
-                    <td>{{$property->propTotal}}</td>
+
+                    <td>{{$property->propBuilt}}</td>
+                    <td>{{$property->propTerrain}}</td>
+
                     <td class="text-center">{{$property->propBaths}}</td>
                     <td class="text-center">{{$property->propBedroom}}</td>
                     <td class="text-center">

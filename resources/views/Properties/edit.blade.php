@@ -11,7 +11,6 @@
     <form action="{{route('Properties.update', ['property'=>$property])}}" method="POST" class="w-50">
         @csrf
         @method('PUT')
-
         <div class="row">
             <div class="col">
                 <label for="ID" class="form-label">ID</label>
@@ -63,18 +62,44 @@
                 <label for="InmoId">Inmobiliaria</label>
                 <select name="inmoId" class="form-control dropdown w-100 text-center">
                     @foreach ($inmobiliarias as $inmo)
-                        @if ($inmo->inmoId === $property->inmoId)
-                            <option value="{{$inmo->inmoId}}" selected>{{$inmo->inmoName}} </option>
-                        @endif
-                        <option value="{{$inmo->inmoId}}">{{$inmo->inmoName}}</option>
+                        <option value="{{$inmo->inmoId}}" {{($inmo->inmoId =$property->inmoId) ? 'selected' : ''}}>{{$inmo->inmoName}}</option>
                     @endforeach
                 </select>
                 {{-- Error --}}
                 @error('InmoId')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
-
             </div>
+        </div>
+
+
+           {{-- Contactos --}}
+           <div class="row">
+            <div class="col">
+                <label for="contactoId">Contacto</label>
+                <select name="contactoId" class="form-control dropdown w-100 text-center">
+                    @foreach ($contactos as $contacto)
+                        <option value="{{$contacto->contactoId}}" {{($property->contactoId == $contacto->contactoId) ? 'selected' : ''}}>{{$contacto->contactoName}}</option>
+                    @endforeach
+                </select>
+                {{-- Error --}}
+                @error('contactoId')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+        </div>
+
+
+          {{-- Description --}}
+          <div class="row mt-3">
+            <label for="propDescription" class="form-label">Desctipción</label>
+            <textarea name="propDescription" cols="30" rows="10" style="resize: none">
+                {{$property->propDescription}}
+            </textarea>
+            {{-- Error --}}
+            @error('propDescription')
+                <div class="alert alert-danger">{{$message}}</div>
+            @enderror
         </div>
 
 
@@ -136,33 +161,25 @@
 
 
         <div class="row mt-3">
-            {{-- Frente --}}
+            {{-- Construccion  --}}
             <div class="col">
-                <label for="propFront" class="form-label">Frente (mts2)</label>
-                <input type="text" name="propFront" class="form-control" style="text-align: end" value="{{$property->propFront}}">
+                <label for="propBuilt" class="form-label">Construción (mts2)</label>
+                <input type="text" name="propBuilt" class="form-control" style="text-align: end" value="{{$property->propBuilt}}">
                 {{-- Error --}}
-                @error('propFront')
+                @error('propBuilt')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- Profundidad --}}
+            {{-- Terreno --}}
             <div class="col">
-                <label for="propDepth" class="form-label">Profundidad (mts2)</label>
-                <input type="text" name="propDepth" class="form-control" style="text-align: end" value="{{$property->propDepth}}">
+                <label for="propTerrain" class="form-label">Terreno (mts2)</label>
+                <input type="text" name="propTerrain" class="form-control" style="text-align: end" value="{{$property->propTerrain}}">
                  {{-- Error --}}
-                 @error('propDepth')
+                 @error('propTerrain')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
             </div>
-            {{-- Total --}}
-            <div class="col">
-                <label for="propTotal" class="form-label">Total (mts2)</label>
-                <input type="text" name="propTotal" class="form-control" style="text-align: end" value="{{$property->propTotal}}">
-                {{-- Error --}}
-                @error('propTotal')
-                    <div class="alert alert-danger">{{ $message }}</div>
-                @enderror
-            </div>
+
         </div>
 
         <div class="row mt-3">

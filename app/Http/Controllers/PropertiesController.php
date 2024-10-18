@@ -63,16 +63,17 @@ class PropertiesController extends Controller
                 'propPrice'=>'required | decimal:2',
                 'propSurveillance'=>'nullable',
                 'propGarden'=>'nullable',
-                'propFront'=>'required | decimal:2',
-                'propDepth'=>'required | decimal:2',
-                'propTotal'=>'required | decimal:2',
+                'propBuilt'=>'required',
+                'propTerrain'=>'required',
                 'propBedroom'=>'nullable',
                 'propParking'=>'nullable',
                 'propBaths'=>'nullable',
                 'categoryId'=>'required',
                 'biztypeId'=>'required',
                 'propDetails'=>'required',
-                'inmoId'=>'required'
+                'propDescription'=>'required',
+                'inmoId'=>'required',
+                'contactoId'=>'nullable'
             ]
         );
         // surveillance
@@ -108,7 +109,7 @@ class PropertiesController extends Controller
         //inmobiliarias
         $inmobiliaria = DB::table('inmobiliarias')->where('inmoId', '=', $property->inmoId)->first();
         //Cotacto
-        $contacto =DB::table('contactos')->where('inmoId', '=', $inmobiliaria->inmoId)->first();
+        $contacto =DB::table('contactos')->where('contactoId', '=', $property->contactoId)->first();
 
         return view('Properties.show', ['property'=>$property , 'images'=>$images, 'biztype'=>$biztype,'category'=>$category, 'inmobiliaria'=>$inmobiliaria, 'contacto'=>$contacto]);
     }
@@ -129,8 +130,13 @@ class PropertiesController extends Controller
          ->orderBy('inmoName', 'asc')
          ->get();
 
+         $contactos = DB::table('contactos')
+         ->select('contactoId', 'contactoName')
+         ->orderBy('contactoName', 'asc')
+         ->get();
 
-        return view('Properties.edit', ['property'=>$property, 'categories'=>$categories, 'biztypes'=>$biztypes , 'imagesCount'=>$imagesCount, 'inmobiliarias'=>$inmobiliarias]);
+
+        return view('Properties.edit', ['property'=>$property, 'categories'=>$categories, 'biztypes'=>$biztypes , 'imagesCount'=>$imagesCount, 'inmobiliarias'=>$inmobiliarias, 'contactos'=>$contactos]);
     }
 
     /**
@@ -141,7 +147,7 @@ class PropertiesController extends Controller
         //dd($request);
         $validData = $request->validate(
             [
-                'propName'=>'required',
+               'propName'=>'required',
                 'propStreetNum'=>'required',
                 'propNeighborhood'=>'required',
                 'propCity'=>'required',
@@ -149,16 +155,18 @@ class PropertiesController extends Controller
                 'propStatus'=>'required',
                 'propPrice'=>'required | decimal:2',
                 'propSurveillance'=>'nullable',
-                'propFront'=>'required | decimal:2',
-                'propDepth'=>'required | decimal:2',
-                'propTotal'=>'required | decimal:2',
+                'propGarden'=>'nullable',
+                'propBuilt'=>'required',
+                'propTerrain'=>'required',
                 'propBedroom'=>'nullable',
                 'propParking'=>'nullable',
                 'propBaths'=>'nullable',
                 'categoryId'=>'required',
                 'biztypeId'=>'required',
                 'propDetails'=>'required',
-                'inmoId'=>'required'
+                'propDescription'=>'required',
+                'inmoId'=>'required',
+                'contactoId'=>'nullable'
             ]
         );
 
