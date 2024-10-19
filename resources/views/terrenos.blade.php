@@ -5,7 +5,7 @@
     <div class="d-flex w-100 align-items-center" style="margin-top: -5vh; height:10vh; background-color:rgba(0,0,0,0.50);" >
         {{-- Tipo de operacion  --}}
         <label style="color:#e1e1e1; margin-right:1vw; margin-left:3vw; font-size:.7rem">Tipo de Operación:</label>
-        <form action="{{route('Casas')}}" method="post" class="mt-2">
+        <form action="{{route('Terrenos')}}" method="post" class="mt-2">
             @csrf
             @method('GET')
             <select name="bizmode" class="dropdown text-center form-control bg-dark" style="width: auto; color:#E8BC15;  border:#E8BC15 solid 1px;  font-size:.7rem" onchange="this.form.submit()">

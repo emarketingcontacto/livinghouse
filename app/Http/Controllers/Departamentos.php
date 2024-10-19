@@ -13,7 +13,6 @@ class Departamentos extends Controller
     public function index (Request $request)
     {
         $TypeUpload = 'Departamento';
-
         if($request->bizmode === null || $request->bizmode === 'all')
         {
             $propiedades = DB::table('properties')
@@ -33,7 +32,6 @@ class Departamentos extends Controller
             ->get();
 
         }else{
-
             $propiedades = DB::table('properties')
             ->join('categories', 'categories.categoryId', '=', 'properties.categoryId')
             ->join('biztype','biztype.biztypeId', '=', 'properties.biztypeId')
