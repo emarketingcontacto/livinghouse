@@ -33,13 +33,15 @@
 <div class="properties-main">
     <div class="properties-container">
         <div class="propeperties-property">
-            <div class="row row-fields" style="background-color: #000; border-radius: 5px;">
+            <div class="row row-fields" style="background-color: #dee2e6; border-radius: 10px;">
                 <div class="col col-fields col-3">
                     <span class="material-symbols-outlined fs-2" >paid</span>
                     <span class="sm-span">Precio</span>
                 </div>
+
                 <div class="col col-values mt-3" style="color:#E8BC15">
-                    <p class="fs-4" style="currency, currency:'MXN'">${{$property->propPrice}}</p>
+                    {{-- <p class="fs-4" style="currency, currency:'MXN'">${{$property->propPrice}}</p> --}}
+                    <p class="fs-4" style="currency, currency:'MXN'">${{ number_format($property->propPrice, 2, '.', ',') }}</p>
                 </div>
             </div>
 
@@ -111,14 +113,27 @@
 
 
             {{-- Seizes --}}
-            <div class="row row-fields">
-                <div class="col col-fields">
-                    <span class="material-symbols-outlined fs-2">square_foot</span>
-                    <span class="sm-span">Medidas</span>
+            <div class="row row-fields d-flex">
+                <div class="properties-mesures">
+                    <div class="col col-fields">
+                        <span class="material-symbols-outlined fs-2">square_foot</span>
+                        <span class="sm-span">Medidas</span>
+                    </div>
+                    <div class="properties-mesures-values">
+                        <div class="col col-values property-value">
+                            <ul>
+                                <li class="property-value">{{$property->propBuilt}}</li>
+                                <li class="property-field">Construcción (m2)</li>
+                            </ul>
+                        </div>
+                        <div class="col col-values property-value">
+                            <ul>
+                                <li class="property-value">{{$property->propBuilt}}</li>
+                                <li class="property-field">Terreno (m2)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <div class="col col-values">Frente -  {{$property->propFront}}</div>
-                <div class="col col-values">Fondo -   {{$property->propDepth}} </div>
-                <div class="col col-values" >Total -   {{$property->propTotal}}</div>
             </div>
             {{-- End Sizes --}}
 
@@ -171,9 +186,13 @@
             <img src="{{asset('storage/'.$inmobiliaria->inmoLogo)}}" alt="{{$inmobiliaria->inmoName}}" width="200px" height="100px">
         </div>
         <div class="properties-contacto">
-            <h4>{{$contacto->contactoName}}</h4>
-            <p>{{$contacto->contactoPhone}}</p>
-            <p>{{$contacto->contactoEmail}}</p>
+            <h3>{{$contacto->contactoName}}</h3>
+            <p><a href="tel:+{{$contacto->contactoPhone}}" class="btn btn-sm btn-primary">
+                <i class="bi bi-telephone-outbound-fill"></i>
+                {{$contacto->contactoPhone}}</a></p>
+            <p><a href="mailto:{{$contacto->contactoEmail}}" class="btn btn-sm btn-success" >
+                <i class="bi bi-envelope-at-fill"></i>
+                {{$contacto->contactoEmail}}</a></p>
         </div>
         <x-propertyGallery :propID="$property->propId"></x-propertyGallery>
     </div>

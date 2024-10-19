@@ -17,7 +17,7 @@
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
-                    <img src="{{asset('Images/bienes_raices_gto.png')}}" alt="LivingHouse" width="180px" style="border-radius: 5%">
+                    <img src="{{asset('Images/bienes_raices_gto.png')}}" alt="LivingHouse" width="180px" style="border-radius: 50%">
                 </a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>

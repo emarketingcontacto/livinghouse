@@ -20,11 +20,14 @@ class Departamentos extends Controller
             ->join('categories', 'categories.categoryId', '=', 'properties.categoryId')
             ->join('biztype','biztype.biztypeId', '=', 'properties.biztypeId')
             ->join('images','images.propId', '=', 'properties.propId')
+            ->join('inmobiliarias','inmobiliarias.inmoId' , '=', 'properties.inmoId' )
             ->select(
                 'properties.*',
                 'categories.categoryName',
                 'biztype.biztypeName',
-                'images.imageName'
+                'images.imageName',
+                'inmobiliarias.inmoLogo',
+                'inmobiliarias.inmoName'
             )
             ->where('categoryName', '=', $TypeUpload)
             ->get();
@@ -35,11 +38,15 @@ class Departamentos extends Controller
             ->join('categories', 'categories.categoryId', '=', 'properties.categoryId')
             ->join('biztype','biztype.biztypeId', '=', 'properties.biztypeId')
             ->join('images','images.propId', '=', 'properties.propId')
+            ->join('inmobiliarias','inmobiliarias.inmoId' , '=', 'properties.inmoId' )
+
             ->select(
                 'properties.*',
                 'categories.categoryName',
                 'biztype.biztypeName',
-                'images.imageName'
+                'images.imageName',
+                'inmobiliarias.inmoLogo',
+                'inmobiliarias.inmoName'
             )
             ->where('categoryName', '=', $TypeUpload)
             ->where('biztype.biztypeName', '=',$request->bizmode)

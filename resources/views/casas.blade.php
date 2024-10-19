@@ -35,8 +35,11 @@
                     <img src="{{asset('storage/'.$propiedad->imageName)}}" class="card-img-top" width="285px" height="160px">
 
                     <div class="card-body">
+                        {{-- Nombre --}}
                         <h5 class="card-title text-center">{{$propiedad->propName}}</h5>
+                        {{-- Description --}}
                         <p class="card-text w-100 text-center" style="font-size: .8rem"> {{$propiedad->propDescription}} </p>
+                        {{-- Tipo --}}
                         <p class="text-center bg-dark" style="color:#E8BC15; border-radius:10px; font-size:.7rem">{{$propiedad->biztypeName}}</p>
                     </div>
                     <ul class="list-group list-group-flush">

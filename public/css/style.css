@@ -283,6 +283,11 @@ footer{
     font-weight: bold;
 }
 
+.contacto-data{
+    width: 15vw;
+    text-align: start;
+}
+
 .properties{
     display: flex;
     flex-wrap: wrap;
@@ -294,16 +299,16 @@ footer{
 
 .properties-image{
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
 
 .properties-container{
     display: flex;
     width: 70%;
-    align-items: center;
+    align-items: start;
     justify-content: center;
-    padding-top: 5vh;
+    padding-top: 3vh;
     padding-bottom: 5vh;
 }
 
@@ -343,4 +348,36 @@ footer{
     width: 100%;
     height: auto;
     background-color: #000;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
 }
+
+.properties-mesures{
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.properties-mesures-values{
+    display: flex;
+    width: 80%;
+}
+
+.property-value{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.property-value li{
+    list-style: none;
+}
+
+.property-field{
+    font-size: .7rem;
+    color: var(--secondary);
+}
+
+
