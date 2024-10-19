@@ -21,6 +21,7 @@ class Neighborhood extends Component
     {
         $neighborhoods = DB::table('properties')
         ->select('properties.propNeighborhood' )
+        ->distinct('properties.propNeighborhood')
         ->get();
 
         return view('components.neighborhood', ['neighborhoods' =>$neighborhoods ]);
