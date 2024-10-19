@@ -16,6 +16,7 @@ class Casas extends Controller
         $TypeUpload = 'Casa';
 
             if($request->bizmode === null || $request->bizmode === 'all')
+
             {
                 $propiedades = DB::table('properties')
                 ->join('categories', 'categories.categoryId', '=', 'properties.categoryId')

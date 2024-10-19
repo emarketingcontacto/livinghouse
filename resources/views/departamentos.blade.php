@@ -18,7 +18,7 @@
         {{-- End Tipo de operacion  --}}
 
         {{-- Neighborhood --}}
-        <x-neighborhood></x-neighborhood>
+        <x-neighborhood routeName="Departamentos.index"></x-neighborhood>
         {{-- End Neighborhood --}}
 
     </div>

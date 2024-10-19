@@ -31,6 +31,7 @@ class Comercios extends Controller
                     'inmobiliarias.inmoName'
                 )
             ->where('categoryName', '=', $TypeUpload)
+            ->where('properties.propNeighborhood', 'LIKE', '%'.$request->propneighborhood.'%' )
             ->get();
 
         }else{
@@ -51,6 +52,7 @@ class Comercios extends Controller
                 )
             ->where('categoryName', '=', $TypeUpload)
             ->where('biztype.biztypeName', '=',$request->bizmode)
+            ->where('properties.propNeighborhood', 'LIKE', '%'.$request->propneighborhood.'%' )
             ->get();
         }
         return view('comercios', ['propiedades' => $propiedades, 'bizmode'=>$request->bizmode]);
