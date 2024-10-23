@@ -11,6 +11,10 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <script src="{{asset('script.js')}}"></script>
     <title>Bienes Raices Guanajuato</title>
+
+    {{-- Google Tag --}}
+    <meta name="google-site-verification" content="fIu-dd2Yp8kLrUBA04wShh5DSAZVATzoX4VloIpYxjI" />
+    {{-- End Google Tag --}}
 </head>
 <body>
     <Header>
