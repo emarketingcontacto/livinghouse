@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 
 @section('main-content')
 <div style="margin-top: -6vh">

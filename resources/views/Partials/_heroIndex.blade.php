@@ -27,7 +27,7 @@
                     @if ($carouselCounter < 8)
 
                         <div @php echo $firtsActiveCarouselCounter == 0 ? 'class="carousel-item active" ': 'class="carousel-item" ';  @endphp  >
-                           <img src="{{asset('storage/'.$item->imageName)}}" class="d-flex w-100 h-50" alt="carrousel_1">
+                           <img src="{{asset('storage/'.$item->imageName)}}" class="d-flex w-100" alt="carrousel_1" height="400vh">
                             <div class="carousel-caption d-none d-md-block">
                                 <h5>{{$item->propName}}</h5>
                                 <p>{{$item->propDetails}}</p>
