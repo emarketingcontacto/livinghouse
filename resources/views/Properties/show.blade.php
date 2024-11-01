@@ -1,4 +1,4 @@
-@extends('layout');
+@extends('layout')
 
 @section('main-content')
 <div class="d-flex align-items-center justify-content-center w-100 bg-dark p-2" style="margin-top:-5vh; color:#E8BC15">

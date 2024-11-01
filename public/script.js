@@ -1,6 +1,5 @@
 document.onload = getSuccess();
 
-
 //Controls the success label
 function getSuccess() {
     setTimeout(function () {
@@ -9,7 +8,6 @@ function getSuccess() {
             success.style.display = "none";
         } }, 5000)
 }
-
 
 // add buttons for properties images control
 function addImageControl() {

@@ -10,18 +10,28 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <script src="{{asset('script.js')}}"></script>
+    {{-- Google Tag --}}
+       <meta name="google-site-verification" content="fIu-dd2Yp8kLrUBA04wShh5DSAZVATzoX4VloIpYxjI" />
+    {{-- End Google Tag --}}
+
     {{-- seo --}}
     <meta name="robots" content="index, follow">
     <meta name="description" content="Bienes Raices Guanajuato - Directorio para Venta Renta de Casas, Departamentos, Espacios Comerciales y Venta de Terrenos en el Estado de Guanajuato">
-    {{-- <link rel="canonical" href="https://bienes-raices-guanajuato.com"/> --}}
-    <link href='@("https://bienes-raices-guanajuato.com/" + Request.RawUrl)' rel="canonical">
     <title>Bienes Raices Guanajuato</title>
+    {{-- canonical --}}
+    <script>
+        const canonicalUrl = window.location.href;
+        const link = document.createElement('link');
+        link.rel = 'canonical';
+        link.href = canonicalUrl;
+        document.head.appendChild(link);
+    </script>
 
-    {{-- Google Tag --}}
-    <meta name="google-site-verification" content="fIu-dd2Yp8kLrUBA04wShh5DSAZVATzoX4VloIpYxjI" />
-    {{-- End Google Tag --}}
 </head>
 <body>
+    {{-- <script>
+        alert(window.location.href);
+    </script> --}}
     <header>
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
@@ -37,7 +47,6 @@
                     <a class="nav-link" aria-current="page" href="{{route('Casas')}}">Casas</a>
                   </li>
                   <li class="nav-item">
-                    {{-- <a class="nav-link" href="/Departamentos">Departamentos</a> --}}
                     <a class="nav-link" href="{{route('Departamentos.index')}}">Departamentos</a>
                   </li>
                   <li class="nav-item">
