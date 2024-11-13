@@ -10,9 +10,20 @@
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
     <link rel="icon" href="{{ asset('favicon.ico') }}">
     <script src="{{asset('script.js')}}"></script>
-    {{-- Google Tag --}}
+    {{-- Google Search Console Tag --}}
        <meta name="google-site-verification" content="fIu-dd2Yp8kLrUBA04wShh5DSAZVATzoX4VloIpYxjI" />
-    {{-- End Google Tag --}}
+    {{-- Google Search Console Tag --}}
+
+    {{-- Google analytics --}}
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHT9GSV069"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SHT9GSV069');
+    </script>
+    {{-- End Google analytics --}}
 
     {{-- seo --}}
     <meta name="robots" content="index, follow">
