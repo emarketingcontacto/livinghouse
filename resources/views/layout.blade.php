@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PTXRZCXR');</script>
+<!-- End Google Tag Manager -->
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -15,20 +23,22 @@
     {{-- Google Search Console Tag --}}
 
     {{-- Google analytics --}}
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHT9GSV069"></script>
+    {{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHT9GSV069"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
     gtag('config', 'G-SHT9GSV069');
-    </script>
+    </script> --}}
     {{-- End Google analytics --}}
 
-    {{-- seo --}}
+    {{-- SEO --}}
     <meta name="robots" content="index, follow">
     <meta name="description" content="Bienes Raices Guanajuato - Directorio para Venta Renta de Casas, Departamentos, Espacios Comerciales y Venta de Terrenos en el Estado de Guanajuato">
     <title>Bienes Raices Guanajuato</title>
+    {{-- end SEO --}}
+
     {{-- canonical --}}
     <script>
         const canonicalUrl = window.location.href;
@@ -40,6 +50,11 @@
 
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PTXRZCXR"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
     {{-- <script>
         alert(window.location.href);
     </script> --}}

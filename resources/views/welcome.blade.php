@@ -91,8 +91,6 @@
     </div>
     {{--end section Appartments --}}
 
-
-
     {{--home section Terrenos --}}
     <div class="home-section">
         <div class="home-subtitle">
